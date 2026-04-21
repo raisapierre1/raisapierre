@@ -1,6 +1,108 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Raisa Pierre — Portfolio</title>
-<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}img{image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;-webkit-backface-visibility:hidden;backface-visibility:hidden}::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(100,22,188,0.3);border-radius:3px}</style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+img{image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;-webkit-backface-visibility:hidden;backface-visibility:hidden;max-width:100%;height:auto}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(100,22,188,0.3);border-radius:3px}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+   Targets inline-style patterns via attribute selectors + !important
+   so the single-file React architecture stays untouched.
+   ═══════════════════════════════════════════════════════════════════ */
+
+#root img{max-width:100%;height:auto}
+html,body{max-width:100vw}
+
+/* ─────────── Tablet & below (≤ 1023px) ─────────── */
+@media (max-width: 1023px){
+  #root h1{font-size:clamp(30px,5.5vw,64px)!important;line-height:1.12!important}
+  #root h2{font-size:clamp(24px,4.2vw,36px)!important;line-height:1.2!important}
+  #root h3{font-size:clamp(20px,3.4vw,32px)!important;line-height:1.28!important}
+  #root h4{font-size:clamp(18px,2.8vw,24px)!important;line-height:1.32!important}
+  #root div[style*="font-size: 48px"][style*="font-weight: 700"]{font-size:clamp(32px,5vw,48px)!important;line-height:1.18!important}
+  #root span[style*="font-size: 64px"][style*="font-weight: 300"]{font-size:clamp(40px,6vw,64px)!important;line-height:1.1!important}
+  #root p[style*="font-size: 24px"]{font-size:clamp(16px,2.4vw,24px)!important;line-height:1.5!important}
+  #root p[style*="font-size: 20px"][style*="font-weight: 300"]{font-size:clamp(15px,2vw,20px)!important;line-height:1.55!important}
+
+  #root div[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,1fr)!important;gap:20px!important}
+  #root div[style*="repeat(3, 1fr)"]{grid-template-columns:repeat(2,1fr)!important;gap:14px!important}
+
+  #root div[style*="width: 400px"][style*="height: 480px"]{width:min(100%,320px)!important;height:auto!important;aspect-ratio:400/480!important}
+  #root div[style*="width: 680px"]{width:100%!important}
+  #root div[style*="width: 380px"][style*="flex-shrink: 0"]{width:100%!important}
+
+  #root nav > div > div[style*="gap: 28px"]{gap:18px!important}
+}
+
+/* ─────────── Phone (≤ 767px) ─────────── */
+@media (max-width: 767px){
+  #root section[style*="padding: 32px"]{padding:48px 20px!important}
+  #root section[style*="padding: 80px 32px"]{padding:56px 20px!important}
+  #root section[style*="padding: 60px 32px"]{padding:48px 20px!important}
+
+  #root div[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,1fr)!important;gap:12px!important}
+  #root div[style*="repeat(3, 1fr)"]{grid-template-columns:1fr!important}
+  #root div[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important;gap:24px!important}
+
+  #root div[style*="width: 48%"]{width:100%!important}
+
+  #root section > div[style*="display: flex"][style*="gap: 24px"][style*="align-items: center"]{flex-direction:column!important;align-items:stretch!important;gap:24px!important}
+  #root div[style*="display: flex"][style*="gap: 48px"][style*="align-items: flex-start"]{gap:24px!important}
+
+  #root section > div > div[style*="gap: 64px"]{gap:16px 32px!important}
+
+  #root section > div[style*="display: flex"][style*="justify-content: space-between"]:not([style*="align-items"]):not([style*="flex-wrap"]){flex-wrap:wrap!important;gap:28px!important}
+  #root section > div[style*="display: flex"][style*="justify-content: space-between"]:not([style*="align-items"]):not([style*="flex-wrap"]) > div{flex:1 1 calc(50% - 14px)!important;min-width:140px!important}
+
+  #root section > div[style*="display: flex"][style*="justify-content: center"][style*="align-items: center"]{flex-wrap:wrap!important;gap:24px 32px!important}
+
+  #root div[style*="padding: 48px"][style*="cursor: pointer"][style*="border-radius: 12px"]{padding:28px 20px!important}
+
+  #root nav > div{padding:0 16px!important}
+  #root nav > div > div[style*="gap"]{gap:12px!important}
+
+  #root footer > div[style*="padding: 40px 32px"]{padding:28px 20px!important}
+  #root footer > div > div[style*="display: flex"][style*="justify-content: space-between"]{flex-direction:column!important;align-items:flex-start!important;gap:12px!important}
+
+  #root h3[style*="white-space: nowrap"]{white-space:normal!important;border-right:0!important;animation:none!important}
+
+  #root div[style*="position: fixed"][style*="right: 24px"][style*="top: 50%"]{display:none!important}
+
+  #root div[style*="width: 600px"][style*="height: 600px"]{width:80vw!important;height:80vw!important}
+  #root div[style*="width: 400px"][style*="height: 400px"]{width:60vw!important;height:60vw!important}
+
+  #root div[style*="display: flex"][style*="gap: 16px"][style*="padding-top: 16px"]{flex-wrap:wrap!important}
+
+  #root section > div[style*="display: flex"][style*="gap: 24px"][style*="flex-wrap: wrap"]{gap:16px!important}
+
+  #root h3[style*="font-size: 28px"][style*="font-weight: 700"]{font-size:22px!important;line-height:1.3!important}
+
+  #root div[style*="display: flex"][style*="justify-content: space-between"][style*="padding: 16px 0"]{flex-wrap:wrap!important;gap:8px!important}
+}
+
+/* ─────────── Small phone (≤ 420px) ─────────── */
+@media (max-width: 420px){
+  /* Keep "Raisa Pierre" wordmark visible on mobile; allow it to wrap to two lines */
+  #root nav button > span{
+    font-size:13px!important;
+    line-height:1.1!important;
+    letter-spacing:-0.3px!important;
+    white-space:normal!important;
+    max-width:60px!important;
+    text-align:left!important;
+    display:inline-block!important;
+  }
+  #root nav > div > div{gap:10px!important}
+  #root nav > div > div button{font-size:13px!important}
+  #root button[style*="padding: 16px 32px"]{padding:14px 20px!important;font-size:15px!important}
+  #root div[style*="repeat(4, 1fr)"]{gap:10px!important}
+  #root section[style*="padding: 32px"]{padding:40px 16px!important}
+}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
@@ -1079,7 +1181,7 @@ function getCaseStudyDetail(id, t) {
 }
 
 const experience = [
-  { company: "Proxify → Bestway National Chemists", period: "Jan 2026 - Present", role: "Senior UX/UI Designer & Researcher", desc: "Led end-to-end UX design from research and discovery through wireframing, high-fidelity UI, and design system development for a national pharmacy platform." },
+  { company: "Proxify → Bestway National Chemists", period: "Jan 2026 - Present", role: "Lead Product Designer (UX/UI)", desc: "Led end-to-end UX design from research and discovery through wireframing, high-fidelity UI, and design system development for a national pharmacy platform." },
   { company: "Avanti Studios", period: "Aug 2024 - Jan 2026", role: "Senior UX/UI Designer & Researcher", desc: "Led a cross-functional design team across the full product lifecycle. Improved design processes and documentation, reducing design review cycle time." },
   { company: "Betsson Group", period: "Feb 2021 - Aug 2024", role: "Senior Product Designer → Senior UX/UI Designer", desc: "Synthesized qualitative and quantitative user research to drive data-informed product decisions. Led design education initiatives, elevating organization-wide UX understanding." },
   { company: "NetEnt (now Evolution)", period: "Sep 2019 - Jan 2021", role: "Product Designer → Senior UX Designer", desc: "Designed interactive game experiences for Live Casino and Slot Games. Established user-centric design practices through usability studies and expert reviews." },
@@ -1182,7 +1284,7 @@ function Portfolio() {
         <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: 24 }}>
           <StaggerGroup visible={heroVis} stagger={200}>
             <SlideInFromSide direction="left" delay={0}>
-              <div style={{ fontSize: 20, fontWeight: 400, color: t.accentSecondaryText || "#00bf67" }}>Lead Product Designer & UX/UI Researcher</div>
+              <div style={{ fontSize: 20, fontWeight: 400, color: t.accentSecondaryText || "#00bf67" }}>Lead Product Designer (UX/UI) - UX Researcher</div>
             </SlideInFromSide>
             <h1 style={{ fontSize: 64, fontWeight: 700, color: t.textFull, lineHeight: "72px", margin: 0 }}>
               <WordReveal text="Designing experiences that drive" visible={heroVis} delay={100} />
@@ -1329,9 +1431,9 @@ function Portfolio() {
                 <p style={{ fontSize: 16, color: t.textHi, lineHeight: "24px", margin: 0 }}>I grew up in Manaus, in the Brazilian Amazon, studying industrial design and falling in love with how objects and interfaces shape the way people think. That curiosity took me from a bachelor's and postgraduate in design to a master's focused on digital artifacts, and then into the classroom, where I spent three years as a professor of design, teaching interaction and mentoring the next generation of Brazilian designers.</p>
                 <p style={{ fontSize: 16, color: t.textHi, lineHeight: "24px", margin: "16px 0 0 0" }}>In 2017 I moved to Stockholm and landed in the deep end of European iGaming, one of the most regulated, fastest-moving digital product environments on the planet. Over the past eight years I've designed sign-up flows that satisfied gambling regulators and still converted, built design systems that scaled across 20+ brands, and shipped a live casino product powered by AI-cloned dealers from a greenfield brief to commercial launch.</p>
                 <p style={{ fontSize: 16, color: t.textHi, lineHeight: "24px", margin: "16px 0 0 0" }}>What connects all of it: I lead with research, I design inside constraints, and I believe the system you leave behind matters more than the screens you ship. I've published peer-reviewed work on design heuristics, led teams of 4-12, and built products across iGaming, health tech, and e-commerce that have reached players and patients across Europe and Latin America.</p>
-                <p style={{ fontSize: 16, color: t.textHi, lineHeight: "24px", margin: "16px 0 0 0" }}>Today I'm a Senior UX/UI Designer & Researcher based in Stockholm, bilingual in English and Portuguese, holding dual Swedish-Brazilian citizenship, and always looking for the next hard problem worth solving.</p>
+                <p style={{ fontSize: 16, color: t.textHi, lineHeight: "24px", margin: "16px 0 0 0" }}>Today I'm a Lead Product Designer (UX/UI) & UX Researcher based in Stockholm, bilingual in English and Portuguese, holding dual Swedish-Brazilian citizenship, and always looking for the next hard problem worth solving.</p>
                 <div style={{ paddingTop: 8, marginTop: 16 }}>
-                  <MagneticButton t={t} style={{ background: t.accentPrimary, color: "#fff", border: "none", borderRadius: 8, padding: "12px 24px", fontSize: 16, fontWeight: 500, cursor: "pointer" }}>↓  Download Resume (PDF)</MagneticButton>
+                  <MagneticButton t={t} onClick={() => { const a = document.createElement('a'); a.href = 'Resume_Raisa_Pierre.pdf'; a.download = 'Resume_Raisa_Pierre.pdf'; document.body.appendChild(a); a.click(); document.body.removeChild(a); }} style={{ background: t.accentPrimary, color: "#fff", border: "none", borderRadius: 8, padding: "12px 24px", fontSize: 16, fontWeight: 500, cursor: "pointer" }}>↓  Download Resume (PDF)</MagneticButton>
                 </div>
               </StaggerGroup>
             </div>
