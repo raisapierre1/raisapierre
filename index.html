@@ -1174,7 +1174,11 @@ const skillTags = ["UX Research", "UI Design", "Design Systems", "Sportsbook", "
 // ─── MAIN APP ────────────────────────────────────────────────────
 function Portfolio() {
   const [dark, setDark] = useState(true);
-  const [page, setPage] = useState("home");
+  const validPages = ["home", "work", "about", "contact"];
+  const validCsIds = ["netent", "avanti", "design-systems", "criticmeter", "stellaris"];
+  const isValidPage = (h) => validPages.includes(h) || (h.startsWith("cs-") && validCsIds.includes(h.replace("cs-", "")));
+  const getInitialPage = () => { const h = window.location.hash.replace("#", ""); return isValidPage(h) ? h : "home"; };
+  const [page, setPage] = useState(getInitialPage);
   const t = dark ? tokens.dark : tokens.light;
 
   const [heroRef, heroVis] = useScrollReveal(0.1);
@@ -1182,7 +1186,13 @@ function Portfolio() {
   const [introRef, introVis] = useScrollReveal(0.1);
   const [statsRef, statsVis] = useScrollReveal(0.01);
 
-  const navigate = useCallback((p) => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  const navigate = useCallback((p) => { setPage(p); window.location.hash = p; window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+
+  useEffect(() => {
+    const onHash = () => { const h = window.location.hash.replace("#", ""); if (isValidPage(h)) setPage(h); };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
   const navItems = [{ label: "Home", key: "home" }, { label: "Work", key: "work" }, { label: "About", key: "about" }, { label: "Contact", key: "contact" }];
 
   const Nav = () => (
